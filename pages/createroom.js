@@ -41,14 +41,12 @@ export default function createroom() {
       const parseResponse = await response.json();
 
       router.push({ pathname: "/partyroom" });
-	  console.log("push into partyroom");
     } catch (err) {
       console.error(err.message);
     }
   };
 
   const uploadFiles = (file) =>{
-	  //
 	  if(!file ) return;
 	  const storageRef = ref(storage, `/files/${file.name}`);
 	  const uploadTask = uploadBytesResumable(storageRef, file);
@@ -91,7 +89,6 @@ export default function createroom() {
               type="text"
               name="room_name"
               required="required"
-              //   value={email}
               onChange={(e) => onChange(e)}
             />
           </label>
@@ -103,7 +100,6 @@ export default function createroom() {
               type="text"
               name="room_members"
               required="required"
-              //   value={password}
               onChange={(e) => onChange(e)}
             />
           </label>

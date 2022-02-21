@@ -62,9 +62,7 @@ function Register() {
               className={styles.input}
               type="email"
               name="email"
-              //   placeholder="อีเมล"
               required="required"
-              //   value={email}
               onChange={(e) => onChange(e)}
             />
           </label>
@@ -75,9 +73,8 @@ function Register() {
               className={styles.input}
               type="password"
               name="password"
-              //   placeholder="รหัสผ่าน"
               required="required"
-              //   value={password}
+ 
               onChange={(e) => onChange(e)}
             />
           </label>
@@ -88,9 +85,7 @@ function Register() {
               className={styles.input}
               type="password"
               name="secondpassword"
-              //   placeholder="รหัสผ่าน"
               required="required"
-              //   value={password}
               onChange={(e) => onChange(e)}
             />
           </label>
@@ -110,11 +105,6 @@ function Register() {
               type="button"
               value="ยืนยัน"
               onClick={confirm}
-              // onClick={() => {
-              //   router.push({
-              //     pathname: "/about",
-              //   });
-              // }}
             />
           </label>
           <br></br>

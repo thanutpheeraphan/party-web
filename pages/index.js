@@ -16,33 +16,31 @@ export default function Home() {
   };
   const login = async (e) => {
     e.preventDefault();
-      try {
-        const body = { email, password };
-        const response = await fetch("https://scb10x-assignment.herokuapp.com/auth/login", {
+    try {
+      const body = { email, password };
+      const response = await fetch(
+        "https://scb10x-assignment.herokuapp.com/auth/login",
+        {
           method: "POST",
           body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
           },
-        });
-
-        const parseResponse = await response.json();
-		console.log(parseResponse);
-
-        if (parseResponse.jwtToken) {
-          localStorage.setItem("token", parseResponse.jwtToken);
-          console.log("Login Successfully");
-		  localStorage.setItem("userId", parseResponse.userId);
-		  router.push({ pathname: "/partyroom" });
-        } else {
-		  alert("Invalid email or password!");
-          console.log("Login Unsuccessfully");
         }
-        
-      } catch (err) {
-        console.error(err.message);
+      );
+
+      const parseResponse = await response.json();
+
+      if (parseResponse.jwtToken) {
+        localStorage.setItem("token", parseResponse.jwtToken);
+        localStorage.setItem("userId", parseResponse.userId);
+        router.push({ pathname: "/partyroom" });
+      } else {
+        alert("Invalid email or password!");
       }
-    
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
@@ -67,10 +65,8 @@ export default function Home() {
               className={styles.input}
               type="email"
               name="email"
-              //   placeholder="อีเมล"
               required="required"
-              //   value={email}
-                onChange={(e) => onChange(e)}
+              onChange={(e) => onChange(e)}
             />
           </label>
           <br></br>
@@ -80,10 +76,8 @@ export default function Home() {
               className={styles.input}
               type="password"
               name="password"
-              //   placeholder="รหัสผ่าน"
               required="required"
-              //   value={password}
-                onChange={(e) => onChange(e)}
+              onChange={(e) => onChange(e)}
             />
           </label>
           <br></br>

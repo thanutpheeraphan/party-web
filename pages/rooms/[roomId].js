@@ -55,13 +55,11 @@ export default function Character({ room }) {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const toFetch = params.roomId;
   const results = await fetch(
     `https://scb10x-assignment.herokuapp.com/room/getroom?roomId=${toFetch}`
   ).then((r) => r.json());
 
-  console.log(results);
   return {
     props: {
       room: results,
@@ -73,12 +71,9 @@ export async function getStaticPaths() {
   const rooms = await fetch("https://scb10x-assignment.herokuapp.com/room/getrooms").then((r) =>
     r.json()
   );
-  // console.log(rooms[0].room_name);
   return {
     paths: rooms.map((room) => {
       const roomId = room.room_id;
-      // console.log(typeof roomId)
-      // console.log(roomId)
       return {
         params: {
           roomId,

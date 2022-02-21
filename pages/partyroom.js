@@ -7,7 +7,6 @@ export default function partyroom({ rooms }) {
   const router = useRouter();
 
   const logout = (e) => {
-	// e.preventDefault();
 	router.push({
         pathname: "/",
       });
@@ -15,15 +14,11 @@ export default function partyroom({ rooms }) {
   }
 
   const joinRoom = async (room, e) => {
-    // e.preventDefault();
-    console.log(room);
-    console.log(localStorage.getItem("userId"));
 
     try {
       const userId = localStorage.getItem("userId");
       const room_id = room.room_id;
       let status = "Joined";
-      console.log(status);
       const body = { room_id, userId, status };
       const response = await fetch("https://scb10x-assignment.herokuapp.com/room/userjoined", {
         method: "PUT",
@@ -34,15 +29,12 @@ export default function partyroom({ rooms }) {
       });
 
       const parseResponse = await response.json();
-      console.log(parseResponse);
       router.push({
         pathname: `/rooms/${room.room_id}`,
       });
     } catch (err) {
       console.error(err.message);
     }
-
-    // console.log( `/rooms/${room.room_id}`);
   };
 
   return (
@@ -103,7 +95,6 @@ export async function getStaticProps() {
     r.json()
   );
 
-  // console.log(rooms)
   return {
     props: {
       rooms,
