@@ -1,0 +1,43 @@
+.itemContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 50%;
+}
+
+.itemImg {
+	width: 100%;
+	height: 100%;
+}
+
+.itemBodyContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.itemText {
+	width: 100%;
+	height: 100%;
+	font-size: 1rem;
+}
+
+.itemUnderline {
+	border-top: 2px solid black;
+	width: 95%;
+}
+
+.itemFooterContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.itemBtn {
+	cursor: pointer;
+	width: 50px;
+	height: 30px;
+	font-size: 1rem;
+}

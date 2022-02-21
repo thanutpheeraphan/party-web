@@ -3,6 +3,7 @@
 }
 
 .main {
+	/* background-color: red; */
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -43,6 +44,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  margin-bottom: 5rem;
 }
 
 .title,
@@ -113,4 +115,150 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.inputf {
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	color: #0070f3;
+	font-size: 1rem;
+	margin-bottom: 1.25rem;
+	
+	
+
+}
+
+.label1 {
+	display: flex;
+	flex-direction: column;
+	color: #0070f3;
+	font-size: 1.25rem;
+	
+
+}
+
+.middle {
+	font-size: 1.25rem;
+	display: flex;
+	margin: auto;
+	margin-bottom: 1em;
+	color: #0070f3;
+
+}
+
+.inputbox {
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: groove;
+}
+
+.input{
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: groove;
+	outline: none;
+}
+
+.itemContainer {
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 30%;
+	height: 30%;
+	margin: 5px 5px;
+	
+
+	/* justify-content:space-between; */
+}
+
+.itemImg {
+	height: 200px;
+	/* max-height: 250px; */
+	width: 200px;
+	/* max-width: 250px; */
+}
+
+.itemBodyContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.itemText {
+	width: 100%;
+	height: 100%;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.itemUnderline {
+	border-top: 2px solid black;
+	width: 95%;
+}
+
+.itemFooterContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
+	padding: 5px 10px;
+}
+
+.itemBtn {
+	cursor: pointer;
+	width: 50%;
+	height: 30%;
+	font-size: 0.6em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	
+}
+
+.roomsContainer {
+	/* background-color: aquamarine; */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (max-width: 600px){ 
+	.itemContainer{
+		width: 50%;
+		height: 50%;
+	}
+
+	.itemImg{
+		width: 50px;
+		height: 50px;                                                     
+	}
+	/*Tablets [601px -> 1200px]*/
+}
+
+
+@media only screen and (max-width: 425px){
+
+
+	.itemContainer{
+		width: 35%;
+		height: 35%;
+	}
+
+	.itemText{
+		font-size: small;
+	}
+
+	.itemImg{
+		width: 75px;
+		height: 75px;                                                     
+	}
+	/*Tablets [601px -> 1200px]*/ 
 }
