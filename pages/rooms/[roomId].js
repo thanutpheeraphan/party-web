@@ -13,7 +13,7 @@ export default function Character({ room }) {
         const room_id = room.room_id;
         let status = "Join";
         const body = { room_id, userId, status };
-        const response = await fetch("http://localhost:5000/room/userjoined", {
+        const response = await fetch("https://scb10x-assignment.herokuapp.com/room/userjoined", {
           method: "PUT",
           body: JSON.stringify(body),
           headers: {
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }) {
   console.log(params);
   const toFetch = params.roomId;
   const results = await fetch(
-    `http://localhost:5000/room/getroom?roomId=${toFetch}`
+    `https://scb10x-assignment.herokuapp.com/room/getroom?roomId=${toFetch}`
   ).then((r) => r.json());
 
   console.log(results);
@@ -70,7 +70,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const rooms = await fetch("http://localhost:5000/room/getrooms").then((r) =>
+  const rooms = await fetch("https://scb10x-assignment.herokuapp.com/room/getrooms").then((r) =>
     r.json()
   );
   // console.log(rooms[0].room_name);

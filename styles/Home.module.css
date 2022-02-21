@@ -1,11 +1,10 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .main {
-	/* background-color: red; */
-  min-height: 100vh;
-  padding: 4rem 0;
+  min-height: 50vh;
+  padding: 3rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -124,9 +123,16 @@
 	color: #0070f3;
 	font-size: 1rem;
 	margin-bottom: 1.25rem;
-	
-	
+}
 
+.logout {
+	display: flex;
+	margin-top: 5rem;
+	align-items: center;
+	justify-content: center;
+	color: #0070f3;
+	font-size: 1rem;
+	margin-bottom: 1.25rem;
 }
 
 .label1 {
@@ -134,9 +140,17 @@
 	flex-direction: column;
 	color: #0070f3;
 	font-size: 1.25rem;
-	
 
 }
+
+.label2 {
+	display: flex;
+	/* flex-direction: column; */
+	color: #0070f3;
+	font-size: 1.25rem;
+
+}
+
 
 .middle {
 	font-size: 1.25rem;

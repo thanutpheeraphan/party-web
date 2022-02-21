@@ -18,7 +18,7 @@ export default function Home() {
     e.preventDefault();
       try {
         const body = { email, password };
-        const response = await fetch("http://localhost:5000/auth/login", {
+        const response = await fetch("https://scb10x-assignment.herokuapp.com/auth/login", {
           method: "POST",
           body: JSON.stringify(body),
           headers: {

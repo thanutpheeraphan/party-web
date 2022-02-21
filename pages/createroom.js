@@ -30,7 +30,7 @@ export default function createroom() {
     e.preventDefault();
     try {
       const body = { room_uri, room_members, room_name };
-      const response = await fetch("http://localhost:5000/room/createroom", {
+      const response = await fetch("https://scb10x-assignment.herokuapp.com/room/createroom", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {

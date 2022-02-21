@@ -25,7 +25,7 @@ export default function partyroom({ rooms }) {
       let status = "Joined";
       console.log(status);
       const body = { room_id, userId, status };
-      const response = await fetch("http://localhost:5000/room/userjoined", {
+      const response = await fetch("https://scb10x-assignment.herokuapp.com/room/userjoined", {
         method: "PUT",
         body: JSON.stringify(body),
         headers: {
@@ -47,7 +47,7 @@ export default function partyroom({ rooms }) {
 
   return (
     <div className={styles.container}>
-      <button className={styles.inputf} onClick={(e)=>logout()} >Logout</button>
+      <div className={styles.logout}><button onClick={(e)=>logout()} >Logout</button></div>
       <Head>
         <title>Party Web</title>
         <link rel="icon" href="/favicon.ico" />
@@ -99,7 +99,7 @@ export default function partyroom({ rooms }) {
 export async function getStaticProps() {
   //statically compiled instead of being server side rendered
 
-  const rooms = await fetch("http://localhost:5000/room/getrooms").then((r) =>
+  const rooms = await fetch("https://scb10x-assignment.herokuapp.com/room/getrooms").then((r) =>
     r.json()
   );
 
