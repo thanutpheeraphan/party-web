@@ -151,6 +151,14 @@
 
 }
 
+.backbutton {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	color: #0070f3;
+	font-size: 1.25rem;
+
+}
 
 .middle {
 	font-size: 1.25rem;
@@ -244,6 +252,11 @@
 	height: 100%;
 }
 
+.uploadfileform{
+	background-color: aqua;
+	margin: 2.5rem;
+
+}
 @media only screen and (max-width: 600px){ 
 	.itemContainer{
 		width: 50%;

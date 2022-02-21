@@ -6,6 +6,10 @@ import { useEffect } from "react";
 export default function Character({ room }) {
   const router = useRouter();
 
+  const back = () => {
+    router.back();
+  };
+
   useEffect(() => {
     async function fetchMyAPI() {
       try {
@@ -13,13 +17,16 @@ export default function Character({ room }) {
         const room_id = room.room_id;
         let status = "Join";
         const body = { room_id, userId, status };
-        const response = await fetch("https://scb10x-assignment.herokuapp.com/room/userjoined", {
-          method: "PUT",
-          body: JSON.stringify(body),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://scb10x-assignment.herokuapp.com/room/userjoined",
+          {
+            method: "PUT",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const parseResponse = await response.json();
       } catch (err) {
@@ -41,15 +48,18 @@ export default function Character({ room }) {
 
   return (
     <div className={styles.container}>
+      <button className={styles.backbutton} onClick={() => back()}>
+        Back
+      </button>
       <Head>
         <title>Party Web</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-	  <main className={styles.main}>
+      <main className={styles.main}>
         <h1 className={styles.title}>{room.room_name}</h1>
-		<h2 className={styles.title}>Room Id: {room.room_id}</h2>
-		</main>
+        <h2 className={styles.title}>Room Id: {room.room_id}</h2>
+      </main>
     </div>
   );
 }
@@ -68,9 +78,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const rooms = await fetch("https://scb10x-assignment.herokuapp.com/room/getrooms").then((r) =>
-    r.json()
-  );
+  const rooms = await fetch(
+    "https://scb10x-assignment.herokuapp.com/room/getrooms"
+  ).then((r) => r.json());
   return {
     paths: rooms.map((room) => {
       const roomId = room.room_id;

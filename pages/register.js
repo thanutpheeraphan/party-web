@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 function Register() {
   const router = useRouter();
   const [inputs, setInputs] = useState({ email: "", password: "" });
-  const { email, password , secondpassword} = inputs;
+  const { email, password, secondpassword } = inputs;
 
   const onChange = (e) => {
     //take every input
@@ -16,33 +16,35 @@ function Register() {
 
   const confirm = async (e) => {
     e.preventDefault();
-	if (password!=secondpassword){
-		alert("Password not matching!")
-		return null
-	}
+    if (password != secondpassword) {
+      alert("Password not matching!");
+      return null;
+    }
 
     if (checked) {
       try {
         const body = { email, password };
-        const response = await fetch("https://scb10x-assignment.herokuapp.com/auth/register", {
-          method: "POST",
-          body: JSON.stringify(body),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://scb10x-assignment.herokuapp.com/auth/register",
+          {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const parseResponse = await response.json();
 
         if (parseResponse.jwtToken) {
           localStorage.setItem("token", parseResponse.jwtToken);
-		
+
           console.log("Registered Successfully");
-		  router.push({ pathname: "/partyroom" });
+          router.push({ pathname: "/partyroom" });
         } else {
           console.log("Registered Unsuccessfully");
         }
-        
       } catch (err) {
         console.error(err.message);
       }
@@ -74,7 +76,6 @@ function Register() {
               type="password"
               name="password"
               required="required"
- 
               onChange={(e) => onChange(e)}
             />
           </label>

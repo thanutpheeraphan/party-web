@@ -8,17 +8,16 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 export default function createroom() {
   const router = useRouter();
   const [progress, setProgress] = useState(0);
-  const [room_uri, setUri] = useState('');
+  const [room_uri, setUri] = useState("");
   const [inputs, setInputs] = useState({
     room_name: "",
     room_members: null,
-
   });
   const formHandler = (e) => {
-	  e.preventDefault();
-	  const file = e.target[0].files[0];
-	  uploadFiles(file);
-  }
+    e.preventDefault();
+    const file = e.target[0].files[0];
+    uploadFiles(file);
+  };
   const { room_name, room_members } = inputs;
 
   const onChange = (e) => {
@@ -30,13 +29,16 @@ export default function createroom() {
     e.preventDefault();
     try {
       const body = { room_uri, room_members, room_name };
-      const response = await fetch("https://scb10x-assignment.herokuapp.com/room/createroom", {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://scb10x-assignment.herokuapp.com/room/createroom",
+        {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const parseResponse = await response.json();
 
@@ -46,24 +48,26 @@ export default function createroom() {
     }
   };
 
-  const uploadFiles = (file) =>{
-	  if(!file ) return;
-	  const storageRef = ref(storage, `/files/${file.name}`);
-	  const uploadTask = uploadBytesResumable(storageRef, file);
+  const uploadFiles = (file) => {
+    if (!file) return;
+    const storageRef = ref(storage, `/files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-	  uploadTask.on("state_changed" , (snapshot) => {
-		  const prog = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const prog = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
-		  setProgress(prog);
-
-	  },(err) => console.log(err),
-	  ()=>{
-		  getDownloadURL(uploadTask.snapshot.ref).then(url =>  setUri(url));
-		 
-	  });
-
-
-  }
+        setProgress(prog);
+      },
+      (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => setUri(url));
+      }
+    );
+  };
 
   return (
     <div className={styles.container}>
@@ -74,12 +78,15 @@ export default function createroom() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>สร้างปาร์ตี้</h1>
-		<form onSubmit={formHandler}>
-			<input type="file" className="input"></input>
-			<button type="submit">Upload</button>
-		</form>
 
-		<h2>Uploaded {progress} %</h2>
+        <div className={styles.uploadfileform}>
+          <form onSubmit={formHandler}>
+            <input type="file" className="input"></input>
+            <button type="submit">Upload</button>
+          </form>
+        </div>
+
+        {/* <h2>Uploaded {progress} %</h2> */}
 
         <form>
           <label className={styles.label1}>

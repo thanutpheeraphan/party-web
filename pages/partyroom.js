@@ -7,26 +7,27 @@ export default function partyroom({ rooms }) {
   const router = useRouter();
 
   const logout = (e) => {
-	router.push({
-        pathname: "/",
-      });
-
-  }
+    router.push({
+      pathname: "/",
+    });
+  };
 
   const joinRoom = async (room, e) => {
-
     try {
       const userId = localStorage.getItem("userId");
       const room_id = room.room_id;
       let status = "Joined";
       const body = { room_id, userId, status };
-      const response = await fetch("https://scb10x-assignment.herokuapp.com/room/userjoined", {
-        method: "PUT",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://scb10x-assignment.herokuapp.com/room/userjoined",
+        {
+          method: "PUT",
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const parseResponse = await response.json();
       router.push({
@@ -39,7 +40,9 @@ export default function partyroom({ rooms }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.logout}><button onClick={(e)=>logout()} >Logout</button></div>
+      <div className={styles.logout}>
+        <button onClick={(e) => logout()}>Logout</button>
+      </div>
       <Head>
         <title>Party Web</title>
         <link rel="icon" href="/favicon.ico" />
@@ -91,9 +94,9 @@ export default function partyroom({ rooms }) {
 export async function getStaticProps() {
   //statically compiled instead of being server side rendered
 
-  const rooms = await fetch("https://scb10x-assignment.herokuapp.com/room/getrooms").then((r) =>
-    r.json()
-  );
+  const rooms = await fetch(
+    "https://scb10x-assignment.herokuapp.com/room/getrooms"
+  ).then((r) => r.json());
 
   return {
     props: {
